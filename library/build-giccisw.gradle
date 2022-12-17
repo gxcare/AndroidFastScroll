@@ -3,9 +3,9 @@ apply plugin: 'com.android.library'
 android {
     namespace 'me.zhanghai.android.fastscroll'
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion '33.0.0'
+//    buildToolsVersion '33.0.0'
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 19 // WARNING: works only with 21 !!
         targetSdkVersion rootProject.ext.targetSdkVersion
 //        versionCode Integer.parseInt(VERSION_CODE)
 //        versionName VERSION_NAME
