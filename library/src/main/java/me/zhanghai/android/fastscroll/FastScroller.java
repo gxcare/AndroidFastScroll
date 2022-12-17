@@ -29,13 +29,13 @@ import android.view.ViewGroupOverlay;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import java.util.Objects;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.math.MathUtils;
 import androidx.core.util.Consumer;
+
+import java.util.Objects;
 
 public class FastScroller {
 
@@ -195,7 +195,7 @@ public class FastScroller {
         layoutView(mThumbView, thumbLeft, thumbTop, thumbLeft + mThumbWidth,
                 thumbTop + mThumbHeight);
 
-        String popupText = mViewHelper.getPopupText();
+        CharSequence popupText = mViewHelper.getPopupText();
         boolean hasPopup = !TextUtils.isEmpty(popupText);
         mPopupView.setVisibility(hasPopup ? View.VISIBLE : View.INVISIBLE);
         if (hasPopup) {
@@ -443,7 +443,7 @@ public class FastScroller {
         void scrollTo(int offset);
 
         @Nullable
-        default String getPopupText() {
+        default CharSequence getPopupText() {
             return null;
         }
     }
