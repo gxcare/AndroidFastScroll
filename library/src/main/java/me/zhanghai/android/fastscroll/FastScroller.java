@@ -72,6 +72,8 @@ public class FastScroller {
     private int mDragStartThumbOffset;
     private boolean mDragging;
 
+    private boolean mEnabled = true;
+
     @NonNull
     private final Runnable mAutoHideScrollbarRunnable = this::autoHideScrollbar;
 
@@ -156,6 +158,10 @@ public class FastScroller {
         mView.invalidate();
     }
 
+    public void setEnabled(boolean enabled) {
+        mEnabled = enabled;
+    }
+
     @NonNull
     private Rect getPadding() {
         if (mUserPadding != null) {
@@ -168,6 +174,8 @@ public class FastScroller {
     }
 
     private void onPreDraw() {
+
+        if (!mEnabled) return;
 
         updateScrollbarState();
         mTrackView.setVisibility(mScrollbarEnabled ? View.VISIBLE : View.INVISIBLE);
@@ -270,6 +278,8 @@ public class FastScroller {
 
     private void onScrollChanged() {
 
+        if (!mEnabled) return;
+
         updateScrollbarState();
         if (!mScrollbarEnabled) {
             return;
@@ -280,6 +290,8 @@ public class FastScroller {
     }
 
     private boolean onTouchEvent(@NonNull MotionEvent event) {
+
+        if (!mEnabled) return false;
 
         if (!mScrollbarEnabled) {
             return false;
