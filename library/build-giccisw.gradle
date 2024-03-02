@@ -2,27 +2,30 @@ apply plugin: 'com.android.library'
 
 android {
     namespace 'me.zhanghai.android.fastscroll'
+
     compileSdk rootProject.ext.compileSdkVersion
-//    buildToolsVersion '33.0.0'
     defaultConfig {
-        minSdkVersion 19 // WARNING: works only with 21 !!
+        minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-//        versionCode Integer.parseInt(VERSION_CODE)
-//        versionName VERSION_NAME
-        consumerProguardFiles 'proguard-rules.pro'
+
+        // required for desugaring when setting minSdkVersion to 20 or lower
+        multiDexEnabled true
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled true
     }
     buildTypes {
         release {
-            minifyEnabled false
+            consumerProguardFiles 'proguard-rules.pro'
         }
     }
 }
 
 dependencies {
+    // Java 8 desugaring
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs_nio:2.0.4'
+
     implementation project(':gicci-library')
 //    implementation 'androidx.appcompat:appcompat:1.6.0-rc01'
 //    implementation 'androidx.recyclerview:recyclerview:1.2.1'
