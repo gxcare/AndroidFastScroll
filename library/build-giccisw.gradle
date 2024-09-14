@@ -21,7 +21,7 @@ android {
 
 dependencies {
     // Java 8 desugaring
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs_nio:2.1.1'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs_nio:2.1.2'
 
     implementation project(':gicci-library')
 //    implementation 'androidx.appcompat:appcompat:1.6.0-rc01'
